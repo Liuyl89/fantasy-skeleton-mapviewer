@@ -57,33 +57,32 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/fantasy-skeleton-arcgis/";
+/******/ 	__webpack_require__.p = "/fantasy-skeleton-mapviewer/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 95);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 95:
+/******/ ([
+/* 0 */,
+/* 1 */,
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(96);
+module.exports = __webpack_require__(3);
 
 
 /***/ }),
-
-/***/ 96:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(97);
+__webpack_require__(4);
 
 /***/ }),
-
-/***/ 97:
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110,6 +109,5 @@ __webpack_require__(97);
 // Place any jQuery/helper plugins in here.
 
 /***/ })
-
-/******/ })});;
+/******/ ])});;
 //# sourceMappingURL=vendor.js.map

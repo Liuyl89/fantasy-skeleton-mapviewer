@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fantasy Skeleton Arcgis</title>
+    <title>Fantasy Skeleton Mapviewer</title>
     <meta name="description" content="Fantasy Gis Project from GisUni">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -33,7 +33,7 @@
     
     
     <link rel="stylesheet"
-        href="https://js.arcgis.com/4.4/esri/css/main.css"/>
+        href="https://localhost/arcgis_js_api/library/4.4/esri/css/main.css"/>
     
     
 </head>
@@ -98,7 +98,17 @@
 
     
     
-    <script src="https://js.arcgis.com/4.4/init.js"></script>
+    <script src="http://localhost:8079/fantasy-ui-react/umd/fantasy-ui-react.js"></script>
+    
+
+    
+    
+    <script src="https://localhost/arcgis_js_api/library/4.4/init.js"></script>
+    
+
+    
+    
+    <script src="http://localhost:8079/fantasy-map/umd/fantasy-map.js"></script>
     
 
     
@@ -110,8 +120,8 @@
         })
     
         
-        define("lodash",[],function () {
-            return lodash
+        define("_",[],function () {
+            return _
         })
     
         
@@ -132,6 +142,16 @@
         
         define("PropTypes",[],function () {
             return PropTypes
+        })
+    
+        
+        define("FantasyUIReact",[],function () {
+            return FantasyUIReact
+        })
+    
+        
+        define("FantasyMap",[],function () {
+            return FantasyMap
         })
     
 </script>
