@@ -1,20 +1,14 @@
 <div align="center">
-  <h1 align="center">Fantasy Skeleton Arcgis</h1>
-  <p align="center">网站开发骨架，集成Arcgis JavaScript API、Webpack、Bootstrap、React、Sass、</p>
+  <h1 align="center">Fantasy Skeleton Mapviewer</h1>
+  <p align="center">通用地图浏览应用开发骨架，集成Arcgis JavaScript API、Webpack、Bootstrap、React、Sass、</p>
   <p align="center">Auth by Liuyl from GisUni</p>
 </div>
 
 <h2 align="center">Notice</h2>
 
-此项目基于fantasy-skeleton-react
+此项目基于fantasy-skeleton-arcgis
 
-为了集成Arcgis JavaScript API及其中的dojo，webpack的`output.libraryTarget`被设置为`amd`
 
-这导致了一些问题……
-
-因此，如果想要使用import语句引用除Arcgis JavaScript API外的第三方库，需要在webpack.config中进行额外配置
-
-具体请参考webpack配置文件中HtmlWebpackPlugin插件的`dojoDefines`配置项
 
 <h2 align="center">Install</h2>
 
@@ -38,7 +32,7 @@ npm install
 output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/fantasy-skeleton-arcgis/'
+    publicPath: '/fantasy-skeleton-mapviewer/'
 },
 ```
 
@@ -55,14 +49,14 @@ npm run build
 以nginx为例:
 
 ```bash
-location ^~/fantasy-skeleton-arcgis/{
-	try_files $uri $uri/ /fantasy-skeleton-arcgis/index.html;
+location ^~/fantasy-skeleton-mapviewer/{
+	try_files $uri $uri/ /fantasy-skeleton-mapviewer/index.html;
 }
 ```
 
 通过如下url对页面进行访问：
 
-http://yourHostname/fantasy-skeleton-arcgis/
+http://yourHostname/fantasy-skeleton-mapviewer/
 
 ### 不使用webpack-dev-server进行开发
 ```js
@@ -70,7 +64,7 @@ http://yourHostname/fantasy-skeleton-arcgis/
 output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/fantasy-skeleton-arcgis/'
+    publicPath: '/fantasy-skeleton-mapviewer/'
 },
 ```
 
@@ -87,15 +81,15 @@ npm run build-dev
 以nginx为例:
 
 ```bash
-location ^~/fantasy-skeleton-arcgis/{
-	alias yourPhysicalPath\\fantasy-skeleton-arcgis\\dist\\;
-	try_files $uri $uri/ /fantasy-skeleton-arcgis/index.html;
+location ^~/fantasy-skeleton-mapviewer/{
+	alias yourPhysicalPath\\fantasy-skeleton-mapviewer\\dist\\;
+	try_files $uri $uri/ /fantasy-skeleton-mapviewer/index.html;
 }
 ```
 
 通过如下url对页面进行访问：
 
-http://yourHostname/fantasy-skeleton-arcgis/
+http://yourHostname/fantasy-skeleton-mapviewer/
 
 src目录中代码文件改动时将自动重新编译，刷新页面即可生效
 
@@ -108,7 +102,7 @@ src目录中代码文件改动时将自动重新编译，刷新页面即可生�
 npm run webpack-dev-server
 ```
 
-访问 http://localhost:8070/fantasy-skeleton-arcgis/ 查看页面
+访问 http://localhost:8070/fantasy-skeleton-mapviewer/ 查看页面
 
 src目录中代码文件改动时将自动重新编译，页面更改将自动刷新生效
 

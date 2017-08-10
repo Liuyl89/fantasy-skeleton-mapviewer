@@ -1,8 +1,11 @@
-@import "./Style";
+html, body {
+  height: 100vh;
+  overflow-x: hidden;
+}
 
-.app {
-  margin-top: $padding-head;
-  .jumbotron{
-    margin-top: 10px;
+@media (min-width: 768px) {
+  html, body {
+    height: 100vh;
+    overflow: hidden;
   }
 }
