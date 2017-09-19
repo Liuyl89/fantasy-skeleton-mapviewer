@@ -69,6 +69,12 @@
 
     
     
+    <script
+        src="https://cdn.bootcss.com/async/2.5.0/async.min.js"></script>
+    
+
+    
+    
     <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
     
 
@@ -112,6 +118,11 @@
     
 
     
+    
+    <script src="http://localhost:8079/fantasy-layers/umd/fantasy-layers.js"></script>
+    
+
+    
 <script>
     
         
@@ -122,6 +133,11 @@
         
         define("_",[],function () {
             return _
+        })
+    
+        
+        define("async",[],function () {
+            return async
         })
     
         
@@ -154,9 +170,14 @@
             return FantasyMap
         })
     
+        
+        define("FantasyLayers",[],function () {
+            return FantasyLayers
+        })
+    
 </script>
 <script>
-    require(['vendor.js','app.js'],function () {
+    require(['vendor.js','app.js','dojo/domReady!'],function () {
 
     })
 </script>

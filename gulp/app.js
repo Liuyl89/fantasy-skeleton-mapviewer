@@ -38,6 +38,7 @@ gulp.task(`build${name}`, [`clean${name}`, `copy${name}`, `webpack:build${name}`
 gulp.task(`webpack:build${name}`, (callback) => {
     // modify some webpack config options
     const myConfig = Object.create(webpackConfig)
+    myConfig.devtool = 'cheap-module-source-map'
     myConfig.plugins = myConfig.plugins.concat([
         new webpack.DefinePlugin({
             'process.env': {
@@ -60,7 +61,7 @@ gulp.task(`webpack:build${name}`, (callback) => {
 
 // modify some webpack config options
 const myDevConfig = Object.create(webpackConfig)
-myDevConfig.devtool = 'source-map'
+myDevConfig.devtool = 'cheap-module-eval-source-map'
 
 // create a single instance of the compiler to allow caching
 const devCompiler = webpack(myDevConfig)
@@ -83,7 +84,7 @@ gulp.task(`webpack-dev-server${name}`, [`copy${name}`], () => {
         port = 8070,
         staticPort = 8071,
         myConfig = Object.create(webpackConfig)
-    myConfig.devtool = 'source-map'
+    myConfig.devtool = 'cheap-module-eval-source-map'
     myConfig.entry.app.unshift(
         `webpack-dev-server/client?http://localhost:${port}`,
         'webpack/hot/dev-server')

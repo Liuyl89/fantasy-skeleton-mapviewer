@@ -80,6 +80,10 @@ module.exports = {
                 path: 'lodash.js/',
                 version: '4.17.4',
             }, {
+                file: 'async.min.js',
+                path: 'async/',
+                version: '2.5.0',
+            }, {
                 file: 'prop-types.min.js',
                 path: 'https://unpkg.com/prop-types/',
                 version: '15.5.10',
@@ -113,6 +117,10 @@ module.exports = {
                 file: 'fantasy-map.js',
                 path: 'http://localhost:8079/fantasy-map/umd/',
                 locale: true,
+            }, {
+                file: 'fantasy-layers.js',
+                path: 'http://localhost:8079/fantasy-layers/umd/',
+                locale: true,
             }],
             links: [{
                 rel: 'stylesheet',
@@ -139,8 +147,8 @@ module.exports = {
             // 这将在编译index.html文件是生成一些额外代码
             // 列表中的名称应该是要引用的库的全局变量名称
             dojoDefines: [
-                'jQuery', '_', 'React', 'ReactDOM', 'ReactRouterDOM', 'PropTypes',
-                'FantasyUIReact', 'FantasyMap',
+                'jQuery', '_', 'async', 'React', 'ReactDOM', 'ReactRouterDOM', 'PropTypes',
+                'FantasyUIReact', 'FantasyMap', 'FantasyLayers',
             ],
         }),
         new webpack.ProvidePlugin({
@@ -153,12 +161,14 @@ module.exports = {
         {
             jquery: 'jQuery',
             lodash: '_',
+            async: 'async',
             react: 'React',
             'react-dom': 'ReactDOM',
             'react-router-dom': 'ReactRouterDOM',
             'prop-types': 'PropTypes',
             'fantasy-ui-react': 'FantasyUIReact',
             'fantasy-map': 'FantasyMap',
+            'fantasy-layers': 'FantasyLayers',
         },
         (context, request, callback) => {
             if (/^dojo/.test(request) ||
