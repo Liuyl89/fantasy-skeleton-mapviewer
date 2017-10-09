@@ -15,25 +15,7 @@
     
     
     <link rel="stylesheet"
-        href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css"/>
-    
-    
-    
-    
-    <link rel="stylesheet"
-        href="assets/main.css"/>
-    
-    
-    
-    
-    <link rel="stylesheet"
-        href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    
-    
-    
-    
-    <link rel="stylesheet"
-        href="https://localhost/arcgis_js_api/library/4.4/esri/css/main.css"/>
+        href="https://js.arcgis.com/4.4/esri/css/main.css"/>
     
     
 </head>
@@ -51,55 +33,12 @@
 
     
     
-    <script
-        src="https://cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="assets/js/modernizr.min.js"></script>
     
 
     
     
-    <script
-        src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/async/2.5.0/async.min.js"></script>
-    
-
-    
-    
-    <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/react-router-dom/4.1.2/react-router-dom.js"></script>
-    
-
-    
-    
-    <script
-        src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/fantasy-react-dll/fantasyReactDll.js"></script>
     
 
     
@@ -126,38 +65,8 @@
 <script>
     
         
-        define("jQuery",[],function () {
-            return jQuery
-        })
-    
-        
-        define("_",[],function () {
-            return _
-        })
-    
-        
-        define("async",[],function () {
-            return async
-        })
-    
-        
-        define("React",[],function () {
-            return React
-        })
-    
-        
-        define("ReactDOM",[],function () {
-            return ReactDOM
-        })
-    
-        
-        define("ReactRouterDOM",[],function () {
-            return ReactRouterDOM
-        })
-    
-        
-        define("PropTypes",[],function () {
-            return PropTypes
+        define("fantasyReactDll",[],function () {
+            return fantasyReactDll
         })
     
         
@@ -177,7 +86,12 @@
     
 </script>
 <script>
-    require(['vendor.js','app.js','dojo/domReady!'],function () {
+    var fileArray=[];
+    
+    fileArray.push('/fantasy-skeleton-mapviewer/manifest.a53e49d3d309158bf605.js?2f374a3b8aedd1bac6f2');
+    fileArray.push('/fantasy-skeleton-mapviewer/app.d9e56c92e1eda3598fa6.js?2f374a3b8aedd1bac6f2');
+    fileArray.push('/fantasy-skeleton-mapviewer/vendor.2446f6f18d54b91818e8.js?2f374a3b8aedd1bac6f2');
+    require(fileArray,function () {
 
     })
 </script>

@@ -1,5 +1,7 @@
 import React from 'react'
+import { Treeview } from 'fantasy-ui-react'
 
+const { BootstrapTreeview }=Treeview
 const styles = {
     leftbar: {},
 }
@@ -17,7 +19,7 @@ const lis = _.map(layers, (layer, key) => {
 const Leftbar = () => {
     return (
         <div style={styles.leftbar}>
-            <ul className="list-group">{lis}</ul>
+            <BootstrapTreeview/>
         </div>
     )
 }

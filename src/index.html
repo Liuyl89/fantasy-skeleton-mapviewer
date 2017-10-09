@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fantasy Skeleton Mapviewer</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="description" content="Fantasy Gis Project from GisUni">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -52,7 +52,10 @@
     <% } %>
 </script>
 <script>
-    require(['vendor.js','app.js','dojo/domReady!'],function () {
+    var fileArray=[];
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    fileArray.push('<%= htmlWebpackPlugin.files.chunks[chunk].entry %>');<% } %>
+    require(fileArray,function () {
 
     })
 </script>
