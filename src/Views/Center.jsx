@@ -1,7 +1,8 @@
 import async from 'async'
 import React from 'react'
-import { Map } from 'fantasy-map'
+import { Map, MapAction } from 'fantasy-map'
 import { getLayer } from 'fantasy-layers'
+import store from '../store'
 
 let map
 class Center extends React.Component {
@@ -13,26 +14,15 @@ class Center extends React.Component {
     }
 
     componentDidMount() {
-        async.map(
-            [
-                // 'tianditu-dlg-4490',
-                // 'tianditu-dlg-anno-4490',
-                // 'tianditu-drg-4490',
-                // 'tianditu-drg-anno-4490',
-                // 'tianditu-dlg-102100',
-                // 'tianditu-dlg-anno-102100',
-                // 'tianditu-drg-102100',
-                // 'tianditu-drg-anno-102100',
-                'tianditu-dlg-4326',
-                'tianditu-dlg-anno-4326',
-            ],
-            getLayer,
-            (err, results) => {
-                this.setState({
-                    layers: results,
-                })
-            },
-        )
+        const p = Promise.all([getLayer('tianditu-dlg-4326'), getLayer('tianditu-dlg-anno-4326')])
+        p.then((results) => {
+            this.setState({
+                layers: _.map(results, (item) => {
+                    store.dispatch(MapAction.addLayer(item.layer))
+                    return item.layer
+                }),
+            })
+        })
     }
 
     render() {

@@ -1,11 +1,11 @@
 const path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    webpack = require('webpack')
+    webpack = require('webpack'),
+    reactDllManifest = require('../../../fantasy-dll/fantasy-react-dll/dist/manifest.json')
 
 module.exports = {
     entry: {
-        vendor: ['./src/vendor.js', 'lodash', 'jquery', 'bootstrap',
-            'prop-types', 'react', 'react-dom', 'react-router-dom'],
+        vendor: ['./src/vendor.js'],
         app: ['./src/index.jsx'],
 
     },
@@ -70,17 +70,26 @@ module.exports = {
             template: './src/index.html',
             hash: true,
             filename: 'index.html',
-            title: 'Fantasy Skeleton Arcgis',
+            title: 'Fantasy Skeleton Mapviewer',
             cdn: 'https://cdn.bootcss.com/',
             scripts: [{
                 file: 'modernizr.min.js',
                 path: 'assets/js/',
                 locale: true,
             }, {
+                file: 'fantasyReactDll.js',
+                path: '/fantasy-react-dll/',
+                locale: true,
+            }, {
+                file: 'fantasy-ui-react.js',
+                path: 'http://localhost:8079/fantasy-ui-react/umd/',
+                locale: true,
+            }, {
                 // arcgis js api应该最后引用，否则可能导致multiple define错误
                 file: 'init.js',
                 path: 'https://localhost/arcgis_js_api/library/4.4/',
-                version: '4.4',
+                //path: 'http://localhost:8079/arcgis_js_api/library/4.5/',
+                version: '4.5',
                 locale: true,
             }, {
                 file: 'fantasy-map.js',
@@ -95,9 +104,14 @@ module.exports = {
                 rel: 'stylesheet',
                 file: 'main.css',
                 locale: true,
-                path: 'https://js.arcgis.com/4.4/esri/css/',
+                path: 'http://localhost:8079/arcgis_js_api/library/4.5/esri/css/',
             }],
-            dojoDefines: [],
+            dojoDefines: ['fantasyReactDll', 'FantasyUIReact', 'FantasyMap', 'FantasyLayers'],
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            sourceType: 'var',
+            manifest: reactDllManifest,
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -106,18 +120,21 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
+            sourceType: 'var',
             chunks: ['app', 'vendor'],
         })],
-    externals: [
-        (context, request, callback) => {
-            if (/^dojo/.test(request) ||
-                /^dojox/.test(request) ||
-                /^dijit/.test(request) ||
-                /^esri/.test(request)
-            ) {
-                return callback(null, `amd ${request}`)
-            }
-            return callback()
-        },
-    ],
+    externals: [{
+        'fantasy-ui-react': 'FantasyUIReact',
+        'fantasy-map': 'FantasyMap',
+        'fantasy-layers': 'FantasyLayers',
+    }, (context, request, callback) => {
+        if (/^dojo/.test(request) ||
+            /^dojox/.test(request) ||
+            /^dijit/.test(request) ||
+            /^esri/.test(request)
+        ) {
+            return callback(null, `amd ${request}`)
+        }
+        return callback()
+    }],
 }
